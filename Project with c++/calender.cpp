@@ -1,11 +1,6 @@
 #include <iostream>
 #include <iomanip> // For setw
 using namespace std;
-int firstdayofyear(int year){
-    int day = (year * 365 + ((year - 1) / 4) - ((year - 1) / 100) + ((year - 1) / 400)) % 7;
-
-    return day;
-}
 int main()
 {
     char *month[12] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
@@ -19,7 +14,8 @@ int main()
     if ((year%4==0 && year%10!=0)|| year%400==0){
         daysinmonth[1]= 29;
     }
-    newline= firstdayofyear(year);
+    //newline Determine which day the year will begin from
+    newline= (year * 365 + ((year - 1) / 4) - ((year - 1) / 100) + ((year - 1) / 400)) % 7;
     for (i = 0; i < 12; i++)
     {
         cout << "\n\n\n------------------------ " << month[i] << " ------------------------\n";
