@@ -11,7 +11,7 @@ string n1 = "";
 string n2 = "";
 
 void board(){
-    system("cls"); // Clear the console
+    system("cls");
     cout << "   |   |   \n";
     cout << " " << space[0][0] << " | " << space[0][1] << " | " << space[0][2] << " \n";
     cout << "___|___|___\n";
@@ -92,22 +92,22 @@ bool checkCondition()
 {
     for (int i = 0; i < 3; i++){
     if ((space[i][0] == space[i][1] && space[i][0] == space[i][2]) || (space[0][i] == space[1][i] && space[0][i] == space[2][i])){
-            return true; // Row or column win
+            return true;
         }
     }
 
     if ((space[0][0] == space[1][1] && space[0][0] == space[2][2]) || (space[0][2] == space[1][1] && space[1][1] == space[2][0])){
-        return true; // Diagonal win
+        return true;
     }
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++){
             if (space[i][j] != 'x' && space[i][j] != '0'){
-                return false; // Game still ongoing
+                return false;
             }
         }
     }
     t = true;
-    return false; // It's a draw
+    return false;
 }
 int main(){
     cout << "Enter first player name: ";
