@@ -3,11 +3,7 @@ using namespace std;
 
 int helper(int n,int count){
     if(n==0) return count;
-    int temp= n%10;
-    if(temp==0){
-        return helper(n/10,count+1);
-    }
-    return helper(n/10,count);
+    return helper(n/10,count+1);
 }
 
 int main(){
