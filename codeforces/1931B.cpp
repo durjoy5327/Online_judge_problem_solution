@@ -24,17 +24,14 @@ int main() {
             if (a[i] >= k) {
                 count += (a[i] - k);
             } 
-            else if (count <= a[i]) {
-                cout<<"No\n";
-                count=800;
-                break;
+            else {
+                int l=k-a[i];
+                if(count>=l){
+                    count =count - (k-a[i]);
+                }
+                
             }
-            else{
-                count =count - (k-a[i]);
-            }
-        }
-        if(count==800) continue;
-        if (count == 0) 
+        }        if (count == 0) 
             cout << "Yes\n";
         else 
             cout << "No\n";

@@ -1,53 +1,35 @@
 #include <bits/stdc++.h>
 #include <vector>
 using namespace std;
-
 int main() {
     int t;
     cin >> t;
 
-    while (t--) {
-         int n,m,k;
-         cin>>n>>m>>k;
-         vector<int>a(n);
-         vector<int>b(m);
-         for(int i=0;i<n;i++){
-             cin>>a[i];
-         }
-         for(int i=0;i<m;i++){
-             cin>>b[i];
-         }
-         int k1=k/2;
-         int count1=0,count2=0;
-         sort(a.begin(),a.end());
-         sort(b.begin(),b.end());
-         for(int i=0;i<n;i++){
-             if(a[i]<=k){
-                 if(a[i]!=a[i+1]){
-                     count1++;
-                 }
-             }
-             if(a[i]>k){
-                 break;
-             }
-             
-         }
-         
-          for(int i=0;i<m;i++){
-             if(b[i]<=k){
-                 if(b[i]!=b[i+1]){
-                     count2++;
-                 }
-             }
-             if(b[i]>=k){
-                 break;
-             }
-             
-         }
-         if(count1>=k1 && count2>=k1){
-             cout<<"Yes\n";
-         }
-         else cout<<"No\n";
+    while (t--){
+        int n, m, k;
+        cin >> n >> m >> k;
+        vector<int> a(n),b(m);
+        map<int,int>mp;
+        for(int i=0;i<n;i++){
+            cin>>a[i];
+            mp[a[i]]=1;
+        }
+        for(int i=0;i<m;i++){
+            cin>>b[i];
+            if(mp[b[i]]==1) mp[b[i]]=6;
+            else if(mp[b[i]]==0) mp[b[i]]=3;
+        }
+        int c=k/2;
+        int d=k/2;
+        for(int i=1;i<=k;i++){
+            if(mp[i]==1) c--;
+            if(mp[i]==3) d--;
+            if(mp[i]==0) c=-1;
+        }
+        if(c>=0&& d>=0) cout<<"Yes\n";
+        
+        else cout<<"No\n";
+        
     }
 
     return 0;
