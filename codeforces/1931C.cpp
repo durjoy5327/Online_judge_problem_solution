@@ -1,7 +1,7 @@
-#include<bits/stdc++.h>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
-int main(){
+
+int main() {
     int t;
     cin>>t;
     while(t--){
@@ -11,31 +11,24 @@ int main(){
         for(int i=0;i<n;i++){
             cin>>a[i];
         }
-        int l=0,m=n-1;
-        for(int i=0;i<n-1;i++){
-            if(a[l]==a[i]){  
-                if( i==n-1||a[i]!=a[i+1]){
-                    l=i;
-                    break;
-                }
-            }
+        int first=0,last=n-1;
+        while(first<n&& a[first]==a[0]){
+            first++;
         }
-        if(l==n-1){
-            cout<<0<<endl;
-            continue;
+         while(last>=0&& a[n-1]==a[last]){
+            last--;
         }
-        for(int i=n-1;i>=0;i--){
-            if(a[i]!=a[i-1]){
-                if(i == 0 || a[l]!=a[i] ) {
-                    m=i;
-                    break;
-                }
-            }
+        int ans=0;
+        if((n>first&& last>=0)&&a[first]!=a[last]){
+            int MAF= n-first;
+            int MAL= last+1;
+            ans= min(MAF,MAL);
         }
-        cout<<m-l-1<<endl;
-
+        else{
+            ans=max(0,last-first+1);
+        }
+        cout<<ans<<endl;
     }
-
-
+    
     return 0;
 }
